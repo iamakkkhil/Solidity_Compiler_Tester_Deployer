@@ -2,10 +2,14 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 const Web3 = require("web3");
 const { interface, bytecode } = require("./compile");
 
+const dotenv = require('dotenv');
+dotenv.config();
+
+// ADD mnemonics and rinkeby API for your account
 const provider = new HDWalletProvider(
-    "hawk engage wage two wreck educate example garage relief circle nasty detail",
-    "https://rinkeby.infura.io/v3/c0d543ec6f5645c8a89cbfddde3917b0"
-);
+    `${process.env.MNEMONIC}`,
+    `${process.env.RINKEBY_API}`
+)
 
 const web3 = new Web3(provider);
 
